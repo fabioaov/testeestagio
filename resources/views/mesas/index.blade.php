@@ -4,7 +4,7 @@
             {{ __('Mesas') }}
         </h2>
         <h2 class="font-semibold text-l text-gray-800 leading-tight pt-4">
-            <x-nav-link :href="route('mesas/nova')" :active="request()->routeIs('mesas/nova')">
+            <x-nav-link :href="route('mesas.nova')" :active="request()->routeIs('mesas.nova')">
                 {{ __('Nova mesa') }}
             </x-nav-link>
         </h2>
@@ -23,8 +23,8 @@
                         </thead>
                         @foreach ($mesas as $mesa)
                             <tr>
-                                <td class="border px-6 py-4">{{ $mesa->nome }}</td>
-                                <td class="border px-6 py-4">{{ $mesa->vagas }}</td>
+                                <td class="border px-6 py-4"><a href="{{ route('mesas.ver', $mesa->id) }}">{{ $mesa->nome }}</a></td>
+                                <td class="border px-6 py-4"><a href="{{ route('mesas.ver', $mesa->id) }}">{{ $mesa->vagas }}</a></td>
                             </tr>
                         @endforeach
                     </table>

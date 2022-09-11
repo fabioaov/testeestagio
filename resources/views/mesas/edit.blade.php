@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Produtos > Novo produto') }}
+            {{ __('Mesas > ') }} {{ $mesa[0]->nome }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,8 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <form method="POST" action="{{ route('produtos.salvar') }}">
+                    <!-- TODO: ALTERAR ACTION-->
+                    <form method="POST" action="{{ route('mesas.salvar') }}">
                         @csrf
 
                         <!-- Nome -->
@@ -21,23 +22,15 @@
                             <x-input-label for="nome" :value="__('Nome')" />
 
                             <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome"
-                                :value="old('nome')" required autofocus />
+                                value="{{ $mesa[0]->nome }}" required autofocus />
                         </div>
 
-                        <!-- Valor -->
+                        <!-- Vagas -->
                         <div class="mt-4">
-                            <x-input-label for="valor" :value="__('Valor')" />
+                            <x-input-label for="vagas" :value="__('Vagas')" />
 
-                            <x-text-input id="valor" class="block mt-1 w-full" type="number" step=0.01 name="valor"
-                                :value="old('valor')" required />
-                        </div>
-
-                        <!-- Estoque -->
-                        <div class="mt-4">
-                            <x-input-label for="estoque" :value="__('Estoque')" />
-
-                            <x-text-input id="estoque" class="block mt-1 w-full" type="number" name="estoque"
-                                :value="old('estoque')" required />
+                            <x-text-input id="vagas" class="block mt-1 w-full" type="number" name="vagas"
+                                value="{{ $mesa[0]->vagas }}" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

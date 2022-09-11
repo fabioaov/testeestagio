@@ -58,7 +58,9 @@ class MesasController extends Controller
      */
     public function show($id)
     {
-        //
+        $mesa = Mesa::where('id', $id)->get();
+        
+        return view('mesas.edit', ['mesa' => $mesa]);
     }
 
     /**

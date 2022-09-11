@@ -60,7 +60,9 @@ class ProdutosController extends Controller
      */
     public function show($id)
     {
-        //
+        $produto = Produto::where('id', $id)->get();
+        
+        return view('produtos.edit', ['produto' => $produto]);
     }
 
     /**

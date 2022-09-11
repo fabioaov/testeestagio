@@ -4,7 +4,7 @@
             {{ __('Produtos') }}
         </h2>
         <h2 class="font-semibold text-l text-gray-800 leading-tight pt-4">
-            <x-nav-link :href="route('produtos/novo')" :active="request()->routeIs('produtos/novo')">
+            <x-nav-link :href="route('produtos.novo')" :active="request()->routeIs('produtos.novo')">
                 {{ __('Novo produto') }}
             </x-nav-link>
         </h2>
@@ -24,9 +24,9 @@
                         </thead>
                         @foreach ($produtos as $produto)
                             <tr>
-                                <td class="border px-6 py-4">{{ $produto->nome }}</td>
-                                <td class="border px-6 py-4">{{ $produto->valor }}</td>
-                                <td class="border px-6 py-4">{{ $produto->estoque }}</td>
+                                <td class="border px-6 py-4"><a href="{{ route('produtos.ver', $produto->id) }}">{{ $produto->nome }}</a></td>
+                                <td class="border px-6 py-4"><a href="{{ route('produtos.ver', $produto->id) }}">{{ $produto->valor }}</a></td>
+                                <td class="border px-6 py-4"><a href="{{ route('produtos.ver', $produto->id) }}">{{ $produto->estoque }}</a></td>
                             </tr>
                         @endforeach
                     </table>

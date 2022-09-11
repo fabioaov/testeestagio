@@ -24,12 +24,14 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 //Mesas
 Route::get('/mesas', [MesasController::class, 'index'])->middleware(['auth'])->name('mesas');
-Route::get('/mesas/nova', [MesasController::class, 'create'])->middleware(['auth'])->name('mesas/nova');
-Route::post('/mesas/salvar', [MesasController::class, 'store'])->middleware(['auth'])->name('mesas/salvar');
+Route::get('/mesas/nova', [MesasController::class, 'create'])->middleware(['auth'])->name('mesas.nova');
+Route::post('/mesas/salvar', [MesasController::class, 'store'])->middleware(['auth'])->name('mesas.salvar');
+Route::get('/mesas/ver/{id}', [MesasController::class, 'show'])->middleware(['auth'])->name('mesas.ver');
 
 //Produtos
 Route::get('/produtos', [ProdutosController::class, 'index'])->middleware(['auth'])->name('produtos');
-Route::get('/produtos/novo', [ProdutosController::class, 'create'])->middleware(['auth'])->name('produtos/novo');
-Route::post('/produtos/salvar', [ProdutosController::class, 'store'])->middleware(['auth'])->name('produtos/salvar');
+Route::get('/produtos/novo', [ProdutosController::class, 'create'])->middleware(['auth'])->name('produtos.novo');
+Route::post('/produtos/salvar', [ProdutosController::class, 'store'])->middleware(['auth'])->name('produtos.salvar');
+Route::get('/produtos/ver/{id}', [ProdutosController::class, 'show'])->middleware(['auth'])->name('produtos.ver');
 
 require __DIR__.'/auth.php';
