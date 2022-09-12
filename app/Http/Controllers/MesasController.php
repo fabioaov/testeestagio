@@ -38,12 +38,12 @@ class MesasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => ['required', 'string', 'max:50'],
+            'mesa' => ['required', 'string', 'max:50'],
             'vagas' => ['required', 'integer', 'max:20'],
         ]);
 
         Mesa::create([
-            'nome' => $request->nome,
+            'mesa' => $request->mesa,
             'vagas' => $request->vagas,
         ]);
 
@@ -84,13 +84,13 @@ class MesasController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nome' => ['required', 'string', 'max:50'],
+            'mesa' => ['required', 'string', 'max:50'],
             'vagas' => ['required', 'integer', 'max:20'],
         ]);
 
         $mesa = Mesa::find($id);
 
-        $mesa->nome = $request->nome;
+        $mesa->mesa = $request->mesa;
         $mesa->vagas = $request->vagas;
 
         $mesa->save();

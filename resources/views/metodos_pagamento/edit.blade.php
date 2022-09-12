@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Métodos de pagamento > ') }} {{ $metodo[0]->nome }}
+            {{ __('Métodos de pagamento > ') }} {{ $metodo[0]->metodo }}
         </h2>
     </x-slot>
 
@@ -17,12 +17,12 @@
                         @csrf
                         @method('PUT')
 
-                        <!-- Nome -->
+                        <!-- Método -->
                         <div>
-                            <x-input-label for="nome" :value="__('Nome')" />
+                            <x-input-label for="metodo" :value="__('Método')" />
 
-                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome"
-                                value="{{ $metodo[0]->nome }}" required autofocus />
+                            <x-text-input id="metodo" class="block mt-1 w-full" type="text" name="metodo"
+                                value="{{ $metodo[0]->metodo }}" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

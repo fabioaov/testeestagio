@@ -16,12 +16,12 @@
                     <form method="POST" action="{{ route('mesas.salvar') }}">
                         @csrf
 
-                        <!-- Nome -->
+                        <!-- Mesa -->
                         <div>
-                            <x-input-label for="nome" :value="__('Nome')" />
+                            <x-input-label for="mesa" :value="__('Mesa')" />
 
-                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome"
-                                :value="old('nome')" required autofocus />
+                            <x-text-input id="mesa" class="block mt-1 w-full" type="text" name="mesa"
+                                :value="old('mesa')" required autofocus />
                         </div>
 
                         <!-- Vagas -->

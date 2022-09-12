@@ -16,12 +16,12 @@
                     <form method="POST" action="{{ route('produtos.salvar') }}">
                         @csrf
 
-                        <!-- Nome -->
+                        <!-- Produto -->
                         <div>
-                            <x-input-label for="nome" :value="__('Nome')" />
+                            <x-input-label for="produto" :value="__('Produto')" />
 
-                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome"
-                                :value="old('nome')" required autofocus />
+                            <x-text-input id="produto" class="block mt-1 w-full" type="text" name="produto"
+                                :value="old('produto')" required autofocus />
                         </div>
 
                         <!-- Valor -->

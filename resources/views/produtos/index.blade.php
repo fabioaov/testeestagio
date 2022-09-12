@@ -18,7 +18,7 @@
                         <thead>
                             <tr class="text-center font-bold">
                                 <td class="border px-2 py-4">Opções</td>
-                                <td class="border px-6 py-4">Nome</td>
+                                <td class="border px-6 py-4">Produto</td>
                                 <td class="border px-6 py-4">Valor</td>
                                 <td class="border px-6 py-4">Estoque</td>
                             </tr>
@@ -26,7 +26,7 @@
                         @foreach ($produtos as $produto)
                             <tr>
                                 <td class="border px-2 py-4"><a href="{{ route('produtos.editar', $produto->id) }}">Ver</a></td>
-                                <td class="border px-6 py-4">{{ $produto->nome }}</td>
+                                <td class="border px-6 py-4">{{ $produto->produto }}</td>
                                 <td class="border px-6 py-4">{{ $produto->valor }}</td>
                                 <td class="border px-6 py-4">{{ $produto->estoque }}</td>
                             </tr>

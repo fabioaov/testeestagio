@@ -16,12 +16,12 @@
                     <form method="POST" action="{{ route('metodos_pagamento.salvar') }}">
                         @csrf
 
-                        <!-- Nome -->
+                        <!-- Método -->
                         <div>
-                            <x-input-label for="nome" :value="__('Nome')" />
+                            <x-input-label for="metodo" :value="__('Método')" />
 
-                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome"
-                                :value="old('nome')" required autofocus />
+                            <x-text-input id="metodo" class="block mt-1 w-full" type="text" name="metodo"
+                                :value="old('metodo')" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

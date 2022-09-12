@@ -22,6 +22,6 @@ class MetodoPagamento extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'nome',
+        'metodo',
     ];
 }

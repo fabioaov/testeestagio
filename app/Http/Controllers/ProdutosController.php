@@ -38,13 +38,13 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => ['required', 'string', 'max:50'],
+            'produto' => ['required', 'string', 'max:50'],
             'valor' => ['required', 'numeric', 'max:9999999'],
             'estoque' => ['required', 'integer', 'regex:/^\d+(\.\d{1,2})?$/'],
         ]);
 
         Produto::create([
-            'nome' => $request->nome,
+            'produto' => $request->produto,
             'valor' => $request->valor,
             'estoque' => $request->estoque,
         ]);
@@ -86,14 +86,14 @@ class ProdutosController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nome' => ['required', 'string', 'max:50'],
+            'produto' => ['required', 'string', 'max:50'],
             'valor' => ['required', 'numeric', 'max:9999999'],
             'estoque' => ['required', 'integer', 'regex:/^\d+(\.\d{1,2})?$/'],
         ]);
 
         $produto = Produto::find($id);
 
-        $produto->nome = $request->nome;
+        $produto->produto = $request->produto;
         $produto->valor = $request->valor;
         $produto->estoque = $request->estoque;
 

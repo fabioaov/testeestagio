@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Produtos > ') }} {{ $produto[0]->nome }}
+            {{ __('Produtos > ') }} {{ $produto[0]->produto }}
         </h2>
     </x-slot>
 
@@ -17,12 +17,12 @@
                         @csrf
                         @method('PUT')
 
-                        <!-- Nome -->
+                        <!-- Produto -->
                         <div>
-                            <x-input-label for="nome" :value="__('Nome')" />
+                            <x-input-label for="produto" :value="__('Produto')" />
 
-                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome"
-                                value="{{ $produto[0]->nome }}" required autofocus />
+                            <x-text-input id="produto" class="block mt-1 w-full" type="text" name="produto"
+                                value="{{ $produto[0]->produto }}" required autofocus />
                         </div>
 
                         <!-- Valor -->

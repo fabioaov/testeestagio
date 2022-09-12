@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Mesas > ') }} {{ $mesa[0]->nome }}
+            {{ __('Mesas > ') }} {{ $mesa[0]->mesa }}
         </h2>
     </x-slot>
 
@@ -17,12 +17,12 @@
                         @csrf
                         @method('PUT')
 
-                        <!-- Nome -->
+                        <!-- Mesa -->
                         <div>
-                            <x-input-label for="nome" :value="__('Nome')" />
+                            <x-input-label for="mesa" :value="__('Mesa')" />
 
-                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome"
-                                value="{{ $mesa[0]->nome }}" required autofocus />
+                            <x-text-input id="mesa" class="block mt-1 w-full" type="text" name="mesa"
+                                value="{{ $mesa[0]->mesa }}" required autofocus />
                         </div>
 
                         <!-- Vagas -->

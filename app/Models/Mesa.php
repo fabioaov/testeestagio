@@ -15,7 +15,7 @@ class Mesa extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'nome',
+        'mesa',
         'vagas',
     ];
 }

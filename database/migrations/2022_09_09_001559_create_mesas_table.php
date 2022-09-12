@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 50);
+            $table->string('mesa', 50);
             $table->tinyInteger('vagas');
             $table->tinyInteger('ocupantes')->default(0);
             $table->boolean('condicao')->default(0)->comment('0 = livre, 1 = ocupada');

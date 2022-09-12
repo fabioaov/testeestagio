@@ -18,13 +18,13 @@
                         <thead>
                             <tr class="text-center font-bold">
                                 <td class="border px-2 py-4">Opções</td>
-                                <td class="border px-6 py-4">Nome</td>
+                                <td class="border px-6 py-4">Método</td>
                             </tr>
                         </thead>
                         @foreach ($metodos as $metodo)
                             <tr>
                                 <td class="border px-2 py-4"><a href="{{ route('metodos_pagamento.editar', $metodo->id) }}">Ver</a></td>
-                                <td class="border px-6 py-4">{{ $metodo->nome }}</td>
+                                <td class="border px-6 py-4">{{ $metodo->metodo }}</td>
                             </tr>
                         @endforeach
                     </table>

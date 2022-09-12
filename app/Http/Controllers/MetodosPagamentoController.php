@@ -38,11 +38,11 @@ class MetodosPagamentoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => ['required', 'string', 'max:50'],
+            'metodo' => ['required', 'string', 'max:50'],
         ]);
 
         MetodoPagamento::create([
-            'nome' => $request->nome,
+            'metodo' => $request->metodo,
         ]);
 
         return redirect()->route('metodos_pagamento');
@@ -82,14 +82,12 @@ class MetodosPagamentoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nome' => ['required', 'string', 'max:50'],
+            'metodo' => ['required', 'string', 'max:50'],
         ]);
 
         $metodo = MetodoPagamento::find($id);
 
-        $metodo->nome = $request->nome;
-        $metodo->valor = $request->valor;
-        $metodo->estoque = $request->estoque;
+        $metodo->metodo = $request->metodo;
 
         $metodo->save();
 
