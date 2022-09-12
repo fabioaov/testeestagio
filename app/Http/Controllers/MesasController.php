@@ -42,7 +42,7 @@ class MesasController extends Controller
             'vagas' => ['required', 'integer', 'max:20'],
         ]);
 
-        $mesa = Mesa::create([
+        Mesa::create([
             'nome' => $request->nome,
             'vagas' => $request->vagas,
         ]);

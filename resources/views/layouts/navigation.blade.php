@@ -26,6 +26,11 @@
                         {{ __('Mesas') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('metodos_pagamento')" :active="request()->routeIs('metodos_pagamento')">
+                        {{ __('Métodos de pagamento') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

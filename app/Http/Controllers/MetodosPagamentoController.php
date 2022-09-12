@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
+use App\Models\MetodoPagamento;
 use Illuminate\Http\Request;
 
-class ProdutosController extends Controller
+class MetodosPagamentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::all();
+        $metodos = MetodoPagamento::all();
 
-        return view('produtos/index')->with('produtos', $produtos);
+        return view('metodos_pagamento/index')->with('metodos', $metodos);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        return view('produtos/create');
+        return view('metodos_pagamento/create');
     }
 
     /**
@@ -39,17 +39,13 @@ class ProdutosController extends Controller
     {
         $request->validate([
             'nome' => ['required', 'string', 'max:50'],
-            'valor' => ['required', 'numeric', 'max:9999999'],
-            'estoque' => ['required', 'integer', 'regex:/^\d+(\.\d{1,2})?$/'],
         ]);
 
-        Produto::create([
+        MetodoPagamento::create([
             'nome' => $request->nome,
-            'valor' => $request->valor,
-            'estoque' => $request->estoque,
         ]);
 
-        return redirect()->route('produtos');
+        return redirect()->route('metodos_pagamento');
     }
 
     /**
@@ -71,9 +67,9 @@ class ProdutosController extends Controller
      */
     public function edit($id)
     {
-        $produto = Produto::where('id', $id)->get();
+        $metodo = MetodoPagamento::where('id', $id)->get();
         
-        return view('produtos.edit', ['produto' => $produto]);
+        return view('metodos_pagamento.edit', ['metodo' => $metodo]);
     }
 
     /**
@@ -87,19 +83,17 @@ class ProdutosController extends Controller
     {
         $request->validate([
             'nome' => ['required', 'string', 'max:50'],
-            'valor' => ['required', 'numeric', 'max:9999999'],
-            'estoque' => ['required', 'integer', 'regex:/^\d+(\.\d{1,2})?$/'],
         ]);
 
-        $produto = Produto::find($id);
+        $metodo = MetodoPagamento::find($id);
 
-        $produto->nome = $request->nome;
-        $produto->valor = $request->valor;
-        $produto->estoque = $request->estoque;
+        $metodo->nome = $request->nome;
+        $metodo->valor = $request->valor;
+        $metodo->estoque = $request->estoque;
 
-        $produto->save();
+        $metodo->save();
 
-        return redirect()->route('produtos');
+        return redirect()->route('metodos_pagamento');
     }
 
     /**
@@ -110,10 +104,10 @@ class ProdutosController extends Controller
      */
     public function destroy($id)
     {
-        $produto = Produto::find($id);
+        $metodo = MetodoPagamento::find($id);
 
-        $produto->delete();
+        $metodo->delete();
         
-        return redirect()->route('produtos');
+        return redirect()->route('metodos_pagamento');
     }
 }
