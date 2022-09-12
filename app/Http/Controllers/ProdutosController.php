@@ -60,9 +60,7 @@ class ProdutosController extends Controller
      */
     public function show($id)
     {
-        $produto = Produto::where('id', $id)->get();
-        
-        return view('produtos.edit', ['produto' => $produto]);
+        //
     }
 
     /**
@@ -73,7 +71,9 @@ class ProdutosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produto = Produto::where('id', $id)->get();
+        
+        return view('produtos.edit', ['produto' => $produto]);
     }
 
     /**
@@ -85,7 +85,21 @@ class ProdutosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nome' => ['required', 'string', 'max:50'],
+            'valor' => ['required', 'numeric', 'max:9999999'],
+            'estoque' => ['required', 'integer', 'regex:/^\d+(\.\d{1,2})?$/'],
+        ]);
+
+        $produto = Produto::find($id);
+
+        $produto->nome = $request->nome;
+        $produto->valor = $request->valor;
+        $produto->estoque = $request->estoque;
+
+        $produto->save();
+
+        return redirect()->route('produtos');
     }
 
     /**

@@ -13,9 +13,9 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <!-- TODO: ALTERAR ACTION-->
-                    <form method="POST" action="{{ route('mesas.salvar') }}">
+                    <form method="POST" action="{{ route('mesas.atualizar', $mesa[0]->id) }}">
                         @csrf
+                        @method('PUT')
 
                         <!-- Nome -->
                         <div>

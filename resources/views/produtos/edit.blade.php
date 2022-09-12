@@ -13,9 +13,9 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <!-- TODO: ALTERAR ACTION-->
-                    <form method="POST" action="{{ route('produtos.salvar') }}">
+                    <form method="POST" action="{{ route('produtos.atualizar', $produto[0]->id) }}">
                         @csrf
+                        @method('PUT')
 
                         <!-- Nome -->
                         <div>

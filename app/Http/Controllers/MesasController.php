@@ -58,9 +58,7 @@ class MesasController extends Controller
      */
     public function show($id)
     {
-        $mesa = Mesa::where('id', $id)->get();
-        
-        return view('mesas.edit', ['mesa' => $mesa]);
+        //
     }
 
     /**
@@ -71,7 +69,9 @@ class MesasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mesa = Mesa::where('id', $id)->get();
+        
+        return view('mesas.edit', ['mesa' => $mesa]);
     }
 
     /**
@@ -83,7 +83,19 @@ class MesasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nome' => ['required', 'string', 'max:50'],
+            'vagas' => ['required', 'integer', 'max:20'],
+        ]);
+
+        $mesa = Mesa::find($id);
+
+        $mesa->nome = $request->nome;
+        $mesa->vagas = $request->vagas;
+
+        $mesa->save();
+
+        return redirect()->route('mesas');
     }
 
     /**

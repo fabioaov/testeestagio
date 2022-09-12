@@ -17,14 +17,16 @@
                     <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap">
                         <thead>
                             <tr class="text-center font-bold">
+                                <td class="border px-2 py-4">Opções</td>
                                 <td class="border px-6 py-4">Nome</td>
                                 <td class="border px-6 py-4">Vagas</td>
                             </tr>
                         </thead>
                         @foreach ($mesas as $mesa)
                             <tr>
-                                <td class="border px-6 py-4"><a href="{{ route('mesas.ver', $mesa->id) }}">{{ $mesa->nome }}</a></td>
-                                <td class="border px-6 py-4"><a href="{{ route('mesas.ver', $mesa->id) }}">{{ $mesa->vagas }}</a></td>
+                                <td class="border px-2 py-4"><a href="{{ route('mesas.editar', $mesa->id) }}">Ver</a></td>
+                                <td class="border px-6 py-4">{{ $mesa->nome }}</td>
+                                <td class="border px-6 py-4">{{ $mesa->vagas }}</td>
                             </tr>
                         @endforeach
                     </table>
