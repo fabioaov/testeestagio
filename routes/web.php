@@ -28,6 +28,7 @@ Route::get('/mesas/nova', [MesasController::class, 'create'])->middleware(['auth
 Route::post('/mesas/salvar', [MesasController::class, 'store'])->middleware(['auth'])->name('mesas.salvar');
 Route::get('/mesas/{id}/editar', [MesasController::class, 'edit'])->middleware(['auth'])->name('mesas.editar');
 Route::put('/mesas/{id}', [MesasController::class, 'update'])->middleware(['auth'])->name('mesas.atualizar');
+Route::delete('/mesas/{id}', [MesasController::class, 'destroy'])->middleware(['auth'])->name('mesas.deletar');
 
 //Produtos
 Route::get('/produtos', [ProdutosController::class, 'index'])->middleware(['auth'])->name('produtos');
@@ -35,5 +36,6 @@ Route::get('/produtos/novo', [ProdutosController::class, 'create'])->middleware(
 Route::post('/produtos/salvar', [ProdutosController::class, 'store'])->middleware(['auth'])->name('produtos.salvar');
 Route::get('/produtos/{id}/editar', [ProdutosController::class, 'edit'])->middleware(['auth'])->name('produtos.editar');
 Route::put('/produtos/{id}', [ProdutosController::class, 'update'])->middleware(['auth'])->name('produtos.atualizar');
+Route::delete('/produtos/{id}', [ProdutosController::class, 'destroy'])->middleware(['auth'])->name('produtos.deletar');
 
 require __DIR__.'/auth.php';

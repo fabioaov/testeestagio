@@ -29,8 +29,8 @@
                         <div class="mt-4">
                             <x-input-label for="valor" :value="__('Valor')" />
 
-                            <x-text-input id="valor" class="block mt-1 w-full" type="number" step=0.01 name="valor"
-                                value="{{ $produto[0]->valor }}" required />
+                            <x-text-input id="valor" class="block mt-1 w-full" type="number" step=0.01
+                                name="valor" value="{{ $produto[0]->valor }}" required />
                         </div>
 
                         <!-- Estoque -->
@@ -38,7 +38,7 @@
                             <x-input-label for="estoque" :value="__('Estoque')" />
 
                             <x-text-input id="estoque" class="block mt-1 w-full" type="number" name="estoque"
-                                value="{{  $produto[0]->estoque }}" required />
+                                value="{{ $produto[0]->estoque }}" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -47,6 +47,15 @@
                             </x-primary-button>
                         </div>
                     </form>
+                    <div class="flex items-center justify-end mt-4">
+                        <form method="POST" action="{{ route('produtos.deletar', $produto[0]->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-primary-button class="ml-4 bg-red-500 hover:bg-red-400">
+                                {{ __('Deletar produto') }}
+                            </x-primary-button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

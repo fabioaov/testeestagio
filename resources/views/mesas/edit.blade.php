@@ -39,6 +39,15 @@
                             </x-primary-button>
                         </div>
                     </form>
+                    <div class="flex items-center justify-end mt-4">
+                        <form method="POST" action="{{ route('mesas.deletar', $mesa[0]->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-primary-button class="ml-4 bg-red-500 hover:bg-red-400">
+                                {{ __('Deletar mesa') }}
+                            </x-primary-button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
