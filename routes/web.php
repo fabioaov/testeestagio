@@ -24,19 +24,19 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
 
-    // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
     // Comandas
     Route::post('/comandas/salvar', [ComandasController::class, 'store'])->name('comandas.salvar');
 
-    // Produtos
-    Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos');
-    Route::get('/produtos/novo', [ProdutosController::class, 'create'])->name('produtos.novo');
-    Route::post('/produtos/salvar', [ProdutosController::class, 'store'])->name('produtos.salvar');
-    Route::get('/produtos/{id}/editar', [ProdutosController::class, 'edit'])->name('produtos.editar');
-    Route::put('/produtos/{id}', [ProdutosController::class, 'update'])->name('produtos.atualizar');
-    Route::delete('/produtos/{id}', [ProdutosController::class, 'destroy'])->name('produtos.deletar');
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Formas de pagamento
+    Route::get('/metodos_pagamento', [MetodosPagamentoController::class, 'index'])->name('metodos_pagamento');
+    Route::get('/metodos_pagamento/novo', [MetodosPagamentoController::class, 'create'])->name('metodos_pagamento.novo');
+    Route::post('/metodos_pagamento/salvar', [MetodosPagamentoController::class, 'store'])->name('metodos_pagamento.salvar');
+    Route::get('/metodos_pagamento/{id}/editar', [MetodosPagamentoController::class, 'edit'])->name('metodos_pagamento.editar');
+    Route::put('/metodos_pagamento/{id}', [MetodosPagamentoController::class, 'update'])->name('metodos_pagamento.atualizar');
+    Route::delete('/metodos_pagamento/{id}', [MetodosPagamentoController::class, 'destroy'])->name('metodos_pagamento.deletar');
 
     // Mesas
     Route::get('/mesas', [MesasController::class, 'index'])->name('mesas');
@@ -46,13 +46,16 @@ Route::middleware('auth')->group(function () {
     Route::put('/mesas/{id}', [MesasController::class, 'update'])->name('mesas.atualizar');
     Route::delete('/mesas/{id}', [MesasController::class, 'destroy'])->name('mesas.deletar');
 
-    // Formas de pagamento
-    Route::get('/metodos_pagamento', [MetodosPagamentoController::class, 'index'])->name('metodos_pagamento');
-    Route::get('/metodos_pagamento/novo', [MetodosPagamentoController::class, 'create'])->name('metodos_pagamento.novo');
-    Route::post('/metodos_pagamento/salvar', [MetodosPagamentoController::class, 'store'])->name('metodos_pagamento.salvar');
-    Route::get('/metodos_pagamento/{id}/editar', [MetodosPagamentoController::class, 'edit'])->name('metodos_pagamento.editar');
-    Route::put('/metodos_pagamento/{id}', [MetodosPagamentoController::class, 'update'])->name('metodos_pagamento.atualizar');
-    Route::delete('/metodos_pagamento/{id}', [MetodosPagamentoController::class, 'destroy'])->name('metodos_pagamento.deletar');
+    // Pedidos
+    Route::post('/pedidos/novo', [PedidosController::class, 'store'])->name('produtos.salvar');
+
+    // Produtos
+    Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos');
+    Route::get('/produtos/novo', [ProdutosController::class, 'create'])->name('produtos.novo');
+    Route::post('/produtos/salvar', [ProdutosController::class, 'store'])->name('produtos.salvar');
+    Route::get('/produtos/{id}/editar', [ProdutosController::class, 'edit'])->name('produtos.editar');
+    Route::put('/produtos/{id}', [ProdutosController::class, 'update'])->name('produtos.atualizar');
+    Route::delete('/produtos/{id}', [ProdutosController::class, 'destroy'])->name('produtos.deletar');
 });
 
 require __DIR__ . '/auth.php';

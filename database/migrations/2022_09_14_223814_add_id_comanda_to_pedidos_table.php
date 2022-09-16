@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pedidos', function (Blueprint $table) {
-            $table->foreignId('id_comanda')->constrained('comandas')->after('id_mesa');
+            $table->foreignId('id_comanda')->constrained('comandas')->after('id_garcom');
         });
     }
 

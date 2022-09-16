@@ -67,7 +67,7 @@
                                                 @endforeach
                                             </table>
 
-                                            <!-- TODO: Adicionar produto à comanda -->
+                                            <!-- TODO: Adicionar pedido -->
                                             <form method="POST" action="#">
                                                 @csrf
 
@@ -77,7 +77,7 @@
                                                         <x-input-label for="quantidade" :value="__('Quantidade')" />
 
                                                         <x-text-input id="quantidade" class="block mt-1 w-20"
-                                                            type="number" step=0.01 name="quantidade" :value="old('quantidade')"
+                                                            type="number" name="quantidade" :value="old('quantidade')"
                                                             required />
                                                     </div>
 
@@ -85,10 +85,12 @@
                                                     <div class="mt-4 ml-4 flex-auto">
                                                         <x-input-label for="produto" :value="__('Produto')" />
 
-                                                        <select id="produto" class="block mt-1 w-full" type="number"
-                                                            name="produto" :value="old('produto')" required>
+                                                        <select id="produto"
+                                                            class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                            type="number" name="produto" :value="old('produto')"
+                                                            required>
+                                                            <option selected disabled>Selecione um produto</option>
                                                             @foreach ($produtos as $produto)
-                                                                <option selected disabled>Selecione um produto</option>
                                                                 <option value="{{ $produto->id }}">
                                                                     {{ $produto->produto }}</option>
                                                             @endforeach
@@ -103,7 +105,8 @@
                                                 @method('PUT')
 
                                                 <div class="items-center text-center mt-4">
-                                                    <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">
+                                                    <button
+                                                        class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">
                                                         {{ __('Fechar comanda') }}
                                                     </button>
                                                 </div>

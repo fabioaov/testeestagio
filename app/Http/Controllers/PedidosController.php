@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mesa;
-use App\Models\Pedido;
-use App\Models\Produto;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class PedidosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::getMesas();
-        $pedidos = Pedido::getPedidosComandaAberta();
-        $produtos = Produto::where('estoque', '>', 0)->get();
-
-        return view('dashboard')->with('mesas', $mesas)->with('pedidos', $pedidos)->with('produtos', $produtos);
+        //
     }
 
     /**

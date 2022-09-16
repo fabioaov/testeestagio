@@ -11,6 +11,19 @@ class Pedido extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'id_produto',
+        'quantidade',
+        'condicao',
+        'id_garcom',
+        'id_comanda',
+    ];
+
+    /**
      * Retorna pedidos com comandas em aberto
      * 
      * @return array([object, ...])
