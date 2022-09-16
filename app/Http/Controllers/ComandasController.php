@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mesa;
+use App\Models\Comanda;
 use Illuminate\Http\Request;
 
-class MesasController extends Controller
+class ComandasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class MesasController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::all();
-
-        return view('mesas/index')->with('mesas', $mesas);
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class MesasController extends Controller
      */
     public function create()
     {
-        return view('mesas/create');
+        //
     }
 
     /**
@@ -38,16 +36,14 @@ class MesasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'mesa' => ['required', 'string', 'max:50'],
-            'vagas' => ['required', 'integer', 'max:20'],
+            'idMesa' => ['required', 'integer'],
         ]);
 
-        Mesa::create([
-            'mesa' => $request->mesa,
-            'vagas' => $request->vagas,
+        Comanda::create([
+            'id_mesa' => $request->idMesa,
         ]);
 
-        return redirect()->route('mesas');
+        return redirect()->back();
     }
 
     /**
@@ -69,9 +65,7 @@ class MesasController extends Controller
      */
     public function edit($id)
     {
-        $mesa = Mesa::find($id);
-
-        return view('mesas.edit', ['mesa' => $mesa]);
+        //
     }
 
     /**
@@ -83,19 +77,7 @@ class MesasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'mesa' => ['required', 'string', 'max:50'],
-            'vagas' => ['required', 'integer', 'max:20'],
-        ]);
-
-        $mesa = Mesa::find($id);
-
-        $mesa->mesa = $request->mesa;
-        $mesa->vagas = $request->vagas;
-
-        $mesa->save();
-
-        return redirect()->route('mesas');
+        //
     }
 
     /**
@@ -106,10 +88,6 @@ class MesasController extends Controller
      */
     public function destroy($id)
     {
-        $mesa = Mesa::find($id);
-
-        $mesa->delete();
-
-        return redirect()->route('mesas');
+        //
     }
 }

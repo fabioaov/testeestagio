@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Métodos de pagamento > ') }} {{ $metodo[0]->metodo }}
+            {{ __('Métodos de pagamento > ') }} {{ $metodo->metodo }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <form method="POST" action="{{ route('metodos_pagamento.atualizar', $metodo[0]->id) }}">
+                    <form method="POST" action="{{ route('metodos_pagamento.atualizar', $metodo->id) }}">
                         @csrf
                         @method('PUT')
 
@@ -22,7 +22,7 @@
                             <x-input-label for="metodo" :value="__('Método')" />
 
                             <x-text-input id="metodo" class="block mt-1 w-full" type="text" name="metodo"
-                                value="{{ $metodo[0]->metodo }}" required autofocus />
+                                value="{{ $metodo->metodo }}" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -32,12 +32,12 @@
                         </div>
                     </form>
                     <div class="flex items-center justify-end mt-4">
-                        <form method="POST" action="{{ route('metodos_pagamento.deletar', $metodo[0]->id) }}">
+                        <form method="POST" action="{{ route('metodos_pagamento.deletar', $metodo->id) }}">
                             @csrf
                             @method('DELETE')
-                            <x-primary-button class="ml-4 bg-red-500 hover:bg-red-400">
+                            <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4">
                                 {{ __('Deletar método') }}
-                            </x-primary-button>
+                            </button>
                         </form>
                     </div>
                 </div>

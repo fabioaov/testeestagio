@@ -67,7 +67,7 @@ class MetodosPagamentoController extends Controller
      */
     public function edit($id)
     {
-        $metodo = MetodoPagamento::where('id', $id)->get();
+        $metodo = MetodoPagamento::find($id);
         
         return view('metodos_pagamento.edit', ['metodo' => $metodo]);
     }

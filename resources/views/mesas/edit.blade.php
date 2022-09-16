@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Mesas > ') }} {{ $mesa[0]->mesa }}
+            {{ __('Mesas > ') }} {{ $mesa->mesa }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <form method="POST" action="{{ route('mesas.atualizar', $mesa[0]->id) }}">
+                    <form method="POST" action="{{ route('mesas.atualizar', $mesa->id) }}">
                         @csrf
                         @method('PUT')
 
@@ -22,7 +22,7 @@
                             <x-input-label for="mesa" :value="__('Mesa')" />
 
                             <x-text-input id="mesa" class="block mt-1 w-full" type="text" name="mesa"
-                                value="{{ $mesa[0]->mesa }}" required autofocus />
+                                value="{{ $mesa->mesa }}" required autofocus />
                         </div>
 
                         <!-- Vagas -->
@@ -30,7 +30,7 @@
                             <x-input-label for="vagas" :value="__('Vagas')" />
 
                             <x-text-input id="vagas" class="block mt-1 w-full" type="number" name="vagas"
-                                value="{{ $mesa[0]->vagas }}" required />
+                                value="{{ $mesa->vagas }}" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -40,12 +40,12 @@
                         </div>
                     </form>
                     <div class="flex items-center justify-end mt-4">
-                        <form method="POST" action="{{ route('mesas.deletar', $mesa[0]->id) }}">
+                        <form method="POST" action="{{ route('mesas.deletar', $mesa->id) }}">
                             @csrf
                             @method('DELETE')
-                            <x-primary-button class="ml-4 bg-red-500 hover:bg-red-400">
+                            <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4">
                                 {{ __('Deletar mesa') }}
-                            </x-primary-button>
+                            </button>
                         </form>
                     </div>
                 </div>

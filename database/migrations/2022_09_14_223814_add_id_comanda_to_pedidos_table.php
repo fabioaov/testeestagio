@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pedidos', function (Blueprint $table) {
-            $table->foreignId('id_garcom')->constrained('users')->after('condicao');
+            $table->foreignId('id_comanda')->constrained('comandas')->after('id_mesa');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('pedidos', function (Blueprint $table) {
-            $table->dropForeign(['id_garcom']);
+            $table->dropForeign(['id_comanda']);
         });
     }
 };

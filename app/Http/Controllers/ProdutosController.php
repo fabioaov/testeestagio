@@ -71,7 +71,7 @@ class ProdutosController extends Controller
      */
     public function edit($id)
     {
-        $produto = Produto::where('id', $id)->get();
+        $produto = Produto::find($id);
         
         return view('produtos.edit', ['produto' => $produto]);
     }

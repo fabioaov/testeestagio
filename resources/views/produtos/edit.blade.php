@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Produtos > ') }} {{ $produto[0]->produto }}
+            {{ __('Produtos > ') }} {{ $produto->produto }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <form method="POST" action="{{ route('produtos.atualizar', $produto[0]->id) }}">
+                    <form method="POST" action="{{ route('produtos.atualizar', $produto->id) }}">
                         @csrf
                         @method('PUT')
 
@@ -22,7 +22,7 @@
                             <x-input-label for="produto" :value="__('Produto')" />
 
                             <x-text-input id="produto" class="block mt-1 w-full" type="text" name="produto"
-                                value="{{ $produto[0]->produto }}" required autofocus />
+                                value="{{ $produto->produto }}" required autofocus />
                         </div>
 
                         <!-- Valor -->
@@ -30,7 +30,7 @@
                             <x-input-label for="valor" :value="__('Valor')" />
 
                             <x-text-input id="valor" class="block mt-1 w-full" type="number" step=0.01
-                                name="valor" value="{{ $produto[0]->valor }}" required />
+                                name="valor" value="{{ $produto->valor }}" required />
                         </div>
 
                         <!-- Estoque -->
@@ -38,7 +38,7 @@
                             <x-input-label for="estoque" :value="__('Estoque')" />
 
                             <x-text-input id="estoque" class="block mt-1 w-full" type="number" name="estoque"
-                                value="{{ $produto[0]->estoque }}" required />
+                                value="{{ $produto->estoque }}" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -48,12 +48,12 @@
                         </div>
                     </form>
                     <div class="flex items-center justify-end mt-4">
-                        <form method="POST" action="{{ route('produtos.deletar', $produto[0]->id) }}">
+                        <form method="POST" action="{{ route('produtos.deletar', $produto->id) }}">
                             @csrf
                             @method('DELETE')
-                            <x-primary-button class="ml-4 bg-red-500 hover:bg-red-400">
+                            <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4">
                                 {{ __('Deletar produto') }}
-                            </x-primary-button>
+                            </button>
                         </form>
                     </div>
                 </div>

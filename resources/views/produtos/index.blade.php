@@ -27,7 +27,7 @@
                             <tr>
                                 <td class="border px-2 py-4"><a href="{{ route('produtos.editar', $produto->id) }}">Ver</a></td>
                                 <td class="border px-6 py-4">{{ $produto->produto }}</td>
-                                <td class="border px-6 py-4">{{ $produto->valor }}</td>
+                                <td class="border px-6 py-4">R$ {{ $produto->valor }}</td>
                                 <td class="border px-6 py-4">{{ $produto->estoque }}</td>
                             </tr>
                         @endforeach

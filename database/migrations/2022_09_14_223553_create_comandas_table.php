@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('comandas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_produto')->constrained('produtos');
-            $table->tinyInteger('quantidade');
-            $table->tinyInteger('condicao')->default(0)->comment('0 = pedido anotado, 1 = pedido em preparo, 2 = pedido pronto, 3 = pedido entregue.');
+            $table->boolean('condicao')->default(0)->comment('0 = aberta, 1 = fechada');
+            $table->foreignId('id_mesa')->constrained('mesas');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('comandas');
     }
 };
