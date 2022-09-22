@@ -4,6 +4,7 @@ use App\Http\Controllers\ComandasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MesasController;
 use App\Http\Controllers\MetodosPagamentoController;
+use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/mesas/{id}', [MesasController::class, 'destroy'])->name('mesas.deletar');
 
     // Pedidos
-    Route::post('/pedidos/novo', [PedidosController::class, 'store'])->name('produtos.salvar');
+    Route::post('/pedidos/novo', [PedidosController::class, 'store'])->name('pedidos.salvar');
 
     // Produtos
     Route::get('/produtos', [ProdutosController::class, 'index'])->name('produtos');

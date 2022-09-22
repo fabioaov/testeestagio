@@ -39,10 +39,11 @@ class ComandasController extends Controller
             'idMesa' => ['required', 'integer'],
         ]);
 
-        Comanda::create([
+        $comanda = Comanda::create([
             'id_mesa' => $request->idMesa,
         ]);
 
+        $request->session()->put('comanda_mesa'.$request->idMesa, $comanda->id);
         return redirect()->back();
     }
 

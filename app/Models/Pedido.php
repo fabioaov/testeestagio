@@ -33,7 +33,7 @@ class Pedido extends Model
         return DB::table('pedidos')
             ->join('comandas', 'pedidos.id_comanda', '=', 'comandas.id')
             ->join('produtos', 'pedidos.id_produto', '=', 'produtos.id')
-            ->where('comandas.condicao', 1)
+            ->where('comandas.condicao', 0)
             ->select('pedidos.quantidade', DB::raw('comandas.id_mesa as id_mesa, produtos.produto as produto, produtos.valor as valor'))
             ->get();
     }

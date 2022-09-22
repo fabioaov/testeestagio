@@ -50,8 +50,8 @@
                                                 <thead>
                                                     <tr class="text-center font-bold">
                                                         <td class="border px-3 py-2">Produto</td>
-                                                        <td class="border px-3 py-2">Valor</td>
                                                         <td class="border px-3 py-2">Quantidade</td>
+                                                        <td class="border px-3 py-2">Valor</td>
                                                     </tr>
                                                 </thead>
                                                 @foreach ($pedidos as $pedido)
@@ -59,17 +59,23 @@
                                                         <tr>
                                                             <td class="border px-3 py-2">{{ $pedido->produto }}
                                                             </td>
-                                                            <td class="border px-3 py-2">{{ $pedido->valor }}</td>
                                                             <td class="border px-3 py-2">{{ $pedido->quantidade }}
+                                                            <td class="border px-3 py-2">R$
+                                                                {{ $pedido->valor * $pedido->quantidade }}</td>
                                                             </td>
                                                         </tr>
                                                     @endif
                                                 @endforeach
                                             </table>
 
-                                            <!-- TODO: Adicionar pedido -->
-                                            <form method="POST" action="#">
+                                            <!-- Validation Errors -->
+                                            <x-auth-validation-errors class="my-4" :errors="$errors" />
+
+                                            <form method="POST" action="{{ route('pedidos.salvar') }}">
                                                 @csrf
+
+                                                <input type="hidden" name="idComanda"
+                                                    value="{{ Session::get('comanda_mesa' . $mesa->id) }}">
 
                                                 <div class="flex">
                                                     <!-- Quantidade -->
@@ -77,8 +83,8 @@
                                                         <x-input-label for="quantidade" :value="__('Quantidade')" />
 
                                                         <x-text-input id="quantidade" class="block mt-1 w-20"
-                                                            type="number" name="quantidade" :value="old('quantidade')"
-                                                            required />
+                                                            type="number" min="0" name="quantidade"
+                                                            :value="old('quantidade')" required />
                                                     </div>
 
                                                     <!-- Produto -->
@@ -96,6 +102,12 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
+                                                </div>
+
+                                                <div class="items-center text-center mt-4">
+                                                    <x-primary-button>
+                                                        {{ __('Adicionar pedido') }}
+                                                    </x-primary-button>
                                                 </div>
                                             </form>
 
