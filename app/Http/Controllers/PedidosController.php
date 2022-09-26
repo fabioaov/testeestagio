@@ -37,7 +37,7 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idComanda' => ['required', 'integer', 'exists:comandas,id'],
+            'idMesa' => ['required', 'integer', 'exists:mesas,id'],
             'produto' => ['required', 'integer', 'exists:produtos,id'],
             'quantidade' => ['required', 'integer', 'min:1'],
         ]);
@@ -46,10 +46,10 @@ class PedidosController extends Controller
             'id_produto' => $request->produto,
             'quantidade' => $request->quantidade,
             'id_garcom' => Auth::id(),
-            'id_comanda' => $request->idComanda,
+            'id_comanda' => $request->session()->get('comanda_mesa'.$request->idMesa),
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->back()->with('success_code', $request->idMesa);
     }
 
     /**

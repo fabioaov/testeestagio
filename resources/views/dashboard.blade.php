@@ -27,6 +27,9 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <input type="hidden" id="success_code" value="{{ Session::get('success_code') }}">
+
                             <div class="py-12 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0 hidden"
                                 id="{{ $mesa->id }}">
                                 <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
@@ -74,8 +77,7 @@
                                             <form method="POST" action="{{ route('pedidos.salvar') }}">
                                                 @csrf
 
-                                                <input type="hidden" name="idComanda"
-                                                    value="{{ Session::get('comanda_mesa' . $mesa->id) }}">
+                                                <input type="hidden" name="idMesa" value="{{ $mesa->id }}">
 
                                                 <div class="flex">
                                                     <!-- Quantidade -->
@@ -139,6 +141,14 @@
         </div>
     </div>
     <script>
+        window.onload = function() {
+            let code = document.getElementById('success_code').value;
+
+            if (code != '') {
+                modalOpener(code);
+            };
+        };
+
         function modalOpener(id) {
             let modal = document.getElementById(id);
 

@@ -44,7 +44,7 @@ class ComandasController extends Controller
         ]);
 
         $request->session()->put('comanda_mesa'.$request->idMesa, $comanda->id);
-        return redirect()->back();
+        return redirect()->back()->with('success_code', $request->idMesa);
     }
 
     /**
