@@ -37,10 +37,22 @@
                                         class="relative py-8 px-5 md:px-10 bg-white shadow-sm rounded border-b border-gray-200 sm:rounded-lg"">
                                         <h2 class="text-center font-bold pb-3">{{ $mesa->mesa }}</h2>
                                         @if ($mesa->condicao === null || $mesa->condicao === 1)
+                                            <!-- Validation Errors -->
+                                            <x-auth-validation-errors class="my-4" :errors="$errors" />
+
                                             <form method="POST" action="{{ route('comandas.salvar') }}">
                                                 @csrf
 
                                                 <input type="hidden" name="idMesa" value="{{ $mesa->id }}">
+
+                                                <!-- Ocupantes -->
+                                                <div>
+                                                    <x-input-label for="ocupantes" :value="__('Ocupantes')" />
+
+                                                    <x-text-input id="ocupantes" class="block mt-1 w-full"
+                                                        type="number" name="ocupantes" :value="old('ocupantes')" required
+                                                        autofocus />
+                                                </div>
 
                                                 <div class="items-center text-center mt-4">
                                                     <x-primary-button>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comanda;
+use App\Models\Mesa;
 use Illuminate\Http\Request;
 
 class ComandasController extends Controller
@@ -36,12 +37,19 @@ class ComandasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idMesa' => ['required', 'integer'],
+            'ocupantes' => ['required', 'integer', 'between:1,4'],
+            'idMesa' => ['required', 'integer', 'exists:mesas,id'],
         ]);
 
         $comanda = Comanda::create([
             'id_mesa' => $request->idMesa,
         ]);
+
+        $mesa = Mesa::find($request->idMesa);
+
+        $mesa->ocupantes = $request->ocupantes;
+
+        $mesa->save();
 
         $request->session()->put('comanda_mesa'.$request->idMesa, $comanda->id);
         return redirect()->back()->with('success_code', $request->idMesa);
